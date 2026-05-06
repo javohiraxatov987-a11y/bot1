@@ -11,9 +11,11 @@ import time
 import threading
 from datetime import datetime
 from html import escape as html_escape
+import schedule, time, requests
 
 # Flask imports
 from flask import Flask, jsonify, request
+app = Flask(__name__)
 
 # Aiogram imports
 from dotenv import load_dotenv
@@ -37,6 +39,10 @@ app = Flask(__name__)
 def home():
     """Asosiy sahifa"""
     return "✅ Bot ishlamoqda! | Bot is running!", 200
+
+@app.route('/ping')
+def ping():
+    return 'OK', 200
 
 
 @app.route("/health", methods=["GET"])
